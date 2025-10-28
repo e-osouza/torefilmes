@@ -20,14 +20,11 @@ useEffect(() => {
 
 useEffect(() => {
   if (isSidebarOpen) {
-    // bloqueia o scroll
     document.body.style.overflow = 'hidden';
   } else {
-    // restaura o scroll
     document.body.style.overflow = '';
   }
 
-  // limpa caso o componente desmonte
   return () => {
     document.body.style.overflow = '';
   };
@@ -36,9 +33,9 @@ useEffect(() => {
 
   return (
     <>
-        <header className="fixed top-5 px-5 w-full z-50">
+        <header className="fixed top-0 md:top-5 px-0 md:px-5 w-full z-50">
                 
-            <div className="mx-auto max-w-[var(--largura)] items-center grid grid-cols-10 justify-stretch bg-black/40 backdrop-blur-[30px] md:py-2 py-3 md:pr-4 pr-6 pl-8 rounded-full">
+            <div className="mx-auto max-w-[var(--largura)] items-center grid grid-cols-10 justify-stretch bg-black/40 backdrop-blur-[30px] md:py-2 py-3 md:pr-4 pr-5 pl-5 md:pl-8 rounded-none md:rounded-full">
                 {/* Logo */}
                 <div className="col-span-2">
                     <Link href="/" className={`transition-all block ${isScrolled ? 'w-[50px] lg:w-[70px]' : 'w-[60px] md:w-[80px]'}`}>
@@ -49,14 +46,19 @@ useEffect(() => {
                 {/* Menu Desktop */}
                 <ul className="hidden md:flex gap-7 mx-auto text-[15px] px-5 py-4 col-span-6">
                     <li><Link href="/sobre" className="text-white">Quem Somos</Link></li>
-                    <li><Link href="/servicos" className="text-white">Serviços</Link></li>
                     <li><Link href="/portfolio" className="text-white">Portfólio</Link></li>
                     <li><Link href="/blog" className="text-white">Blog</Link></li>
+                    <li><Link href="/contato" className="text-white">Contato</Link></li>
                 </ul>
 
                 {/* contato*/}
                 <div className="flex justify-end gap-5 col-span-8 md:col-span-2">
-                    <a href="#" target="_blank" className="text-white text-sm uppercase hidden md:flex gap-2 font-semibold items-center border-2 rounded-full px-5 py-2"><Image src={"/icon-whatsapp.svg"} width={20} height={20} alt=""/>Contato</a>
+                    <div className="hidden md:flex gap-2">
+                        <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.instagram.com/torefilmes" target="_blank"><Image src={"/social-instagram.svg"} width={16} height={16} alt=""/></a>
+                        <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.facebook.com/torefilmes" target="_blank"><Image src={"/social-facebook.svg"} width={16} height={16} alt=""/></a>
+                        <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.youtube.com/@torefilmes" target="_blank"><Image src={"/social-youtube.svg"} width={16} height={16} alt=""/></a>
+                        <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.linkedin.com/company/tore-filmes" target="_blank"><Image src={"/social-linkedin.svg"} width={16} height={16} alt=""/></a>
+                    </div>
                     <div className="block md:hidden leading-[1]">
                         <button onClick={() => setSidebarOpen(true)} className="text-white cursor-pointer leading-[1]" aria-label="Abrir menu"><AlignJustify size={28} /></button>
                     </div>
@@ -72,17 +74,22 @@ useEffect(() => {
             </div>
 
             <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] p-6">
-                <Link href="/" onClick={closeSidebar} className="block mb-6">
+                <Link href="/" onClick={closeSidebar} className="block mb-10">
                     <Image src="/logotore.svg" alt="Toré Filmes" width={100} height={40} priority className="w-30 mx-auto"/>
                 </Link>
                 <ul className="text-center space-y-4 text-lg font-bold">
                     <li><Link href="/" onClick={closeSidebar} className="text-white">Início</Link></li>
                     <li><Link href="/sobre" onClick={closeSidebar} className="text-white">Quem Somos</Link></li>
-                    <li><Link href="/servicos" onClick={closeSidebar} className="text-white">Serviços</Link></li>
                     <li><Link href="/portfolio" onClick={closeSidebar} className="text-white">Portfólio</Link></li>
                     <li><Link href="/blog" onClick={closeSidebar} className="text-white">Blog</Link></li>
-                    <li><a href="#" target="_blank" className="text-white flex gap-2 items-center border-2 rounded-full px-5 py-2 mt-6"><Image src={"/icon-whatsapp.svg"} width={20} height={20} alt=""/>Contato</a></li>
+                    <li><Link href="/contato" onClick={closeSidebar} className="text-white">Contato</Link></li>
                 </ul>
+                <div className="flex gap-2 justify-center mt-10">
+                    <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.instagram.com/torefilmes" target="_blank"><Image src={"/social-instagram.svg"} width={16} height={16} alt=""/></a>
+                    <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.facebook.com/torefilmes" target="_blank"><Image src={"/social-facebook.svg"} width={16} height={16} alt=""/></a>
+                    <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.youtube.com/@torefilmes" target="_blank"><Image src={"/social-youtube.svg"} width={16} height={16} alt=""/></a>
+                    <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.linkedin.com/company/tore-filmes" target="_blank"><Image src={"/social-linkedin.svg"} width={16} height={16} alt=""/></a>
+                </div>
             </div>
         </div>
 

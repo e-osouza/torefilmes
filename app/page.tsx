@@ -10,7 +10,7 @@ export default function Home() {
       
       {/*hero section*/}
       <div className="bg-[url(/hero-banner.jpg)] bg-cover bg-top bg-no-repeat">
-        <div className="max-w-[var(--largura)] mx-auto px-5 relative aspect-10/9 md:aspect-10/7">
+        <div className="max-w-[var(--largura)] mx-auto px-5 relative h-[50vh] lg:h-[80vh] md:h-[70vh]">
           <div className="absolute px-5 left-0 bottom-10 md:bottom-20 w-full">
             <h1 className="text-white text-3xl md:text-6xl uppercase mx-auto table max-w-[750px] text-center">Transformando marcas com impacto</h1>
           </div>
@@ -43,7 +43,7 @@ export default function Home() {
       </div>
 
       {/*section 3*/}
-      <div className="max-w-[var(--largura)] mx-auto px-0 md:px-5">
+      <div className="max-w-[var(--largura)] mx-auto px-0 md:px-5 mb-15">
         <div className="grid grid-cols-10 items-center">
           <h3 className="col-span-5 md:col-span-6 uppercase text-sm text-white max-w-[300px] ml-5 xl:ml-0">Narrativas visuais que transformam marcas</h3>
           <div className="col-span-5 md:col-span-4 flex justify-center py-6 bg-[url(/icon-yellow.svg)] bg-[200%_auto] md:bg-[140%_auto] bg-center bg-no-repeat">
@@ -53,7 +53,7 @@ export default function Home() {
       </div>
 
       {/*section 4*/}
-      <div className="max-w-[var(--largura)] mx-auto px-0 md:px-5 mb-15">
+      <div className="hidden      max-w-[var(--largura)] mx-auto px-0 md:px-5 mb-15">
         <div className="grid grid-cols-2">
           <div className="bg-[url(/p-home-1.jpg)] bg-cover bg-center bg-no-repeat aspect-10/7 md:aspect-10/5 flex items-center relative">
             <div className="bg-black/30 w-full h-full absolute left-0 top-0"></div>
@@ -236,8 +236,8 @@ export default function Home() {
       </div>
 
       {/*section 10*/}
-      <div className="bg-[url(/bg-8909.jpg)] bg-cover bg-[left_top] md:bg-[center_top] bg-no-repeat py-20">
-        <div className="max-w-[1100px] mx-auto px-5">
+      <div className="bg-[url(/bg-8909.jpg)] bg-cover bg-[left_top] md:bg-[center_top] bg-no-repeat py-20 relative">
+        <div className="max-w-[1100px] mx-auto px-5 relative z-[1]">
           <p className=" bg-white/10 w-fit flex items-center text-white mx-auto justify-center uppercase text-[12px] mb-2 py-2 px-5 gap-2 rounded-full mb-10">Toré Filmes <Image src={"/icone-tore.svg"} width={20} height={20} alt=""/></p>
           <div className="grid grid-cols-1 md:grid-cols-2 items-center">
             <div className="text-white mb-5 md:mb-0">
@@ -249,6 +249,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div className="absolute w-full h-full left-0 top-0 bg-black/20"></div>
       </div>
 
     </div>

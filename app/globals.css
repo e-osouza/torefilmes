@@ -28,6 +28,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.conteudo-post p {
+  margin-bottom: 20px;
+}
+
 .selo {
   animation: spin 10s linear infinite;
 }

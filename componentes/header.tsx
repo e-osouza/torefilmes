@@ -47,7 +47,7 @@ useEffect(() => {
                 <ul className="hidden md:flex gap-7 mx-auto text-[15px] px-5 py-4 col-span-6">
                     <li><Link href="/sobre" className="text-white">Quem Somos</Link></li>
                     <li><Link href="/portfolio" className="text-white">Portfólio</Link></li>
-                    <li><Link href="/blog" className="text-white">Blog</Link></li>
+                    <li><a href="/blog" className="text-white">Blog</a></li>
                     <li><Link href="/contato" className="text-white">Contato</Link></li>
                 </ul>
 
@@ -81,7 +81,7 @@ useEffect(() => {
                     <li><Link href="/" onClick={closeSidebar} className="text-white">Início</Link></li>
                     <li><Link href="/sobre" onClick={closeSidebar} className="text-white">Quem Somos</Link></li>
                     <li><Link href="/portfolio" onClick={closeSidebar} className="text-white">Portfólio</Link></li>
-                    <li><Link href="/blog" onClick={closeSidebar} className="text-white">Blog</Link></li>
+                    <li><a href="/blog" onClick={closeSidebar} className="text-white">Blog</a></li>
                     <li><Link href="/contato" onClick={closeSidebar} className="text-white">Contato</Link></li>
                 </ul>
                 <div className="flex gap-2 justify-center mt-10">

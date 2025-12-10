@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "torefilmes.com.br",
+        hostname: "painel.torefilmes.com.br",
         pathname: "/wp-content/uploads/**",
       },
     ],

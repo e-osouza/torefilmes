@@ -126,7 +126,7 @@ export default function Home() {
 
         <div className="grid grid-cols-12 gap-5 md:gap-10 items-center mb-10">
           <div className="col-span-5 text-white ml-0 lg:ml-15">
-            <h3 className="text-md md:text-lg leading-[1.2] max-w-[250px] mb-2">salas de edição e pós-produção equipadas com tecnologia avançada</h3>
+            <h3 className="text-md md:text-lg leading-[1.2] max-w-[250px] mb-2">Salas de edição e pós-produção equipadas com tecnologia avançada</h3>
             <div className="w-[60px] h-[10px] bg-[var(--azul)]"></div>
           </div>
           <div className="col-span-7 aspect-10/7 md:aspect-10/4 overflow-hidden rounded-[10px]">

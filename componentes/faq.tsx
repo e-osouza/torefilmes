@@ -18,11 +18,11 @@ const faqData: FaqItem[] = [
       "Nosso compromisso vai além da entrega: unimos excelência e rapidez para fortalecer marcas, consolidar parcerias e manter nossa posição como referência no mercado.",
   },
   {
-    question: "Muito além da produção de vídeos",
+    question: "Experiência e criatividade que transformam histórias",
     answer: "Nossa equipe de diretores, produtores, editores e técnicos de som e imagem combina experiência e inovação para transformar ideias em resultados de alto impacto.",
   },
   {
-    question: "Muito além da produção de vídeos",
+    question: "Equipamentos modernos",
     answer: "Investimos continuamente em equipamentos de filmagem, iluminação e edição de última geração, assegurando qualidade superior e resultados marcantes em cada projeto.",
   },
 ];

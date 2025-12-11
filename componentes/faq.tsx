@@ -52,7 +52,7 @@ export default function Faq() {
                 className="w-full px-4 py-3 font-medium text-white flex justify-between items-center cursor-pointer"
               >
                 {item.question}
-                <span className="text-xl">{isOpen ? "−" : "+"}</span>
+                <span className="text-xl">{isOpen ? "-" : "+"}</span>
               </button>
 
               <div

@@ -57,7 +57,6 @@ useEffect(() => {
                         <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.instagram.com/torefilmes" target="_blank"><Image src={"/social-instagram.svg"} width={16} height={16} alt=""/></a>
                         <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.facebook.com/torefilmes" target="_blank"><Image src={"/social-facebook.svg"} width={16} height={16} alt=""/></a>
                         <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.youtube.com/@torefilmes" target="_blank"><Image src={"/social-youtube.svg"} width={16} height={16} alt=""/></a>
-                        <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.linkedin.com/company/tore-filmes" target="_blank"><Image src={"/social-linkedin.svg"} width={16} height={16} alt=""/></a>
                     </div>
                     <div className="block md:hidden leading-[1]">
                         <button onClick={() => setSidebarOpen(true)} className="text-white cursor-pointer leading-[1]" aria-label="Abrir menu"><AlignJustify size={28} /></button>
@@ -88,7 +87,6 @@ useEffect(() => {
                     <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.instagram.com/torefilmes" target="_blank"><Image src={"/social-instagram.svg"} width={16} height={16} alt=""/></a>
                     <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.facebook.com/torefilmes" target="_blank"><Image src={"/social-facebook.svg"} width={16} height={16} alt=""/></a>
                     <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.youtube.com/@torefilmes" target="_blank"><Image src={"/social-youtube.svg"} width={16} height={16} alt=""/></a>
-                    <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.linkedin.com/company/tore-filmes" target="_blank"><Image src={"/social-linkedin.svg"} width={16} height={16} alt=""/></a>
                 </div>
             </div>
         </div>

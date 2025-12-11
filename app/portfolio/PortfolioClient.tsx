@@ -1,14 +1,41 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { X } from "lucide-react";
+import { X, Loader2 } from "lucide-react";
+import { fetchVideos, Video } from "@/services/videoService";
+
+// Converte qualquer URL do YouTube em URL de embed
+function toEmbedUrl(url: string): string {
+  // https://www.youtube.com/watch?v=Kx8x9dY51Eg
+  const watchMatch = url.match(/v=([^&]+)/);
+  if (watchMatch) {
+    return `https://www.youtube.com/embed/${watchMatch[1]}`;
+  }
+
+  // https://youtu.be/Kx8x9dY51Eg
+  const shortMatch = url.match(/youtu\.be\/([^?]+)/);
+  if (shortMatch) {
+    return `https://www.youtube.com/embed/${shortMatch[1]}`;
+  }
+
+  // Se já for embed ou algo diferente, passa direto
+  return url;
+}
 
 export default function PortfolioClient() {
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
+  const [videos, setVideos] = useState<Video[]>([]);
+  const [loading, setLoading] = useState(true); // loading inicial
+  const [loadingMore, setLoadingMore] = useState(false); // loading ao carregar mais
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true); // se ainda existem vídeos pra carregar
+
+  const perPage = 5;
 
   const abrirVideo = (url: string) => {
-    setVideoUrl(url);
+    const embedUrl = toEmbedUrl(url);
+    setVideoUrl(embedUrl);
   };
 
   const fecharVideo = () => {
@@ -18,6 +45,70 @@ export default function PortfolioClient() {
   useEffect(() => {
     document.body.style.overflow = videoUrl ? "hidden" : "auto";
   }, [videoUrl]);
+
+  // Carregar primeira página
+  useEffect(() => {
+    const carregarVideos = async () => {
+      const data = await fetchVideos(1, perPage);
+      setVideos(data);
+      setLoading(false);
+
+      // Se já veio menos que o perPage, não tem mais nada depois
+      if (data.length < perPage) {
+        setHasMore(false);
+      }
+    };
+
+    carregarVideos();
+  }, []);
+
+  // Função pra carregar mais quando chega perto do fim
+  const loadMore = useCallback(async () => {
+    if (loadingMore || !hasMore) return;
+
+    setLoadingMore(true);
+
+    const nextPage = page + 1;
+    const newVideos = await fetchVideos(nextPage, perPage);
+
+    if (newVideos.length > 0) {
+      setVideos((prev) => [...prev, ...newVideos]);
+      setPage(nextPage);
+
+      if (newVideos.length < perPage) {
+        setHasMore(false);
+      }
+    } else {
+      // Não voltou nada: acabou mesmo
+      setHasMore(false);
+    }
+
+    setLoadingMore(false);
+  }, [page, loadingMore, hasMore]);
+
+  // Listener de scroll pra fazer o infinite load
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!hasMore || loadingMore) return;
+
+      const scrollPosition = window.innerHeight + window.scrollY;
+      const threshold = document.body.offsetHeight - 300;
+
+      if (scrollPosition >= threshold) {
+        loadMore();
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [loadMore, hasMore, loadingMore]);
+
+  const getBackgroundImage = (video: Video): string => {
+    return (
+      video._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
+      "/portfolio-fallback.jpg"
+    );
+  };
 
   return (
     <div className="bg-black overflow-hidden">
@@ -34,94 +125,62 @@ export default function PortfolioClient() {
         <div className="absolute bottom-0 left-0 w-full h-60 bg-gradient-to-t from-black to-transparent"></div>
       </div>
 
-      {/* --- PORTFÓLIO --- */}
-
-      {/* Vídeo Braga Veículos */}
-      <div
-        className="bg-[url(/portfolio-1.jpg)] bg-[center_top] bg-cover bg-no-repeat relative cursor-pointer group"
-        onClick={() =>
-          abrirVideo("https://www.youtube.com/embed/Kx8x9dY51Eg")
-        }
-      >
-        <div className="bg-gradient-to-t from-black/90 to-black/10 w-full h-full absolute bottom-0 left-0"></div>
-        <div className="max-w-[var(--largura)] mx-auto px-5 pt-70 pb-15 relative">
-          <Image
-            className="absolute left-1/2 top-[30%] md:top-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-200 group-hover:scale-110"
-            src="/icon-play.svg"
-            width={80}
-            height={80}
-            alt="Play"
-          />
-          <div className="relative text-white">
-            <h3 className="text-xl md:text-2xl leading-[1.2] uppercase max-w-[315px] mb-3">
-              Braga Veículos - Portas Abertas (2020)
-            </h3>
-            <p className="text-sm max-w-[400px]">
-              Apresentamos a vocês o novo VT da Braga Veículos para informar aos
-              seus clientes que já está com a loja aberta e seguindo todas as
-              recomendações de segurança das autoridades competentes.
-            </p>
-          </div>
+      {/* Loading inicial */}
+      {loading && (
+        <div className="flex items-center justify-center py-40">
+          <Loader2 className="text-white w-10 h-10 animate-spin" />
         </div>
-      </div>
+      )}
 
-      {/* Vídeo Samel */}
-      <div
-        className="bg-[url(/portfolio-2.jpg)] bg-[center_top] bg-cover bg-no-repeat relative cursor-pointer group"
-        onClick={() =>
-          abrirVideo("https://www.youtube.com/embed/Z1PjY05_hP0")
-        }
-      >
-        <div className="bg-gradient-to-t from-black/90 to-black/10 w-full h-full absolute bottom-0 left-0"></div>
-        <div className="max-w-[var(--largura)] mx-auto px-5 pt-70 pb-15 relative">
-          <Image
-            className="absolute left-1/2 top-[30%] md:top-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-200 group-hover:scale-110"
-            src="/icon-play.svg"
-            width={80}
-            height={80}
-            alt="Play"
-          />
-          <div className="relative text-white">
-            <h3 className="text-xl md:text-2xl leading-[1.2] uppercase max-w-[315px] mb-3">
-              Samel - 350 anos de Manaus (2020)
-            </h3>
-            <p className="text-sm max-w-[400px]">
-              Manaus fez 350 anos e produzimos, para o cliente Samel, uma linda
-              homenagem ao aniversário da Cidade.
-            </p>
-          </div>
-        </div>
-      </div>
+      {/* Lista de vídeos */}
+      {!loading &&
+        videos.map((video) => {
+          const bgImage = getBackgroundImage(video);
+          const urlVideo = video.acf?.url_video; // ACF do WP
 
-      {/* Vídeo Prefeitura de Manaus */}
-      <div
-        className="bg-[url(/portfolio-3.jpg)] bg-[center_top] bg-cover bg-no-repeat relative cursor-pointer group"
-        onClick={() =>
-          abrirVideo("https://www.youtube.com/embed/1Hy5A4d5Bi4")
-        }
-      >
-        <div className="bg-gradient-to-t from-black/90 to-black/10 w-full h-full absolute bottom-0 left-0"></div>
-        <div className="max-w-[var(--largura)] mx-auto px-5 pt-70 pb-15 relative">
-          <Image
-            className="absolute left-1/2 top-[30%] md:top-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-200 group-hover:scale-110"
-            src="/icon-play.svg"
-            width={80}
-            height={80}
-            alt="Play"
-          />
-          <div className="relative text-white">
-            <h3 className="text-xl md:text-2xl leading-[1.2] uppercase max-w-[470px] mb-3">
-              Prefeitura de Manaus - Manaus 350 anos: #lindaquesóela (2020)
-            </h3>
-            <p className="text-sm max-w-[500px]">
-              Em homenagem aos 350 anos da nossa cidade, produzimos um VT para a
-              Prefeitura com imagens em cenários famosos de Manaus, um casting
-              que traduz toda a riqueza do nosso povo e visitantes e um jingle
-              alegre e colorido exaltando todos os nossos costumes e beleza.
-            </p>
-          </div>
+          return (
+            <div
+              key={video.id}
+              className="bg-[center_top] aspect-20/12 md:aspect-20/7 bg-cover bg-no-repeat cursor-pointer group relative"
+              style={{ backgroundImage: `url(${bgImage})` }}
+              onClick={() => urlVideo && abrirVideo(urlVideo)}
+            >
+              <div className="bg-gradient-to-t from-black/90 to-black/10 w-full h-full absolute bottom-0 left-0"></div>
+
+              <Image
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-200 group-hover:scale-110"
+                src="/icon-play.svg"
+                width={70}
+                height={70}
+                alt="Play"
+              />
+
+              <div className="max-w-[var(--largura)] w-full left-1/2 -translate-x-1/2 mx-auto px-5 absolute bottom-10">
+                <div className="text-white text-center">
+                  <h3
+                    className="text-xl md:text-2xl leading-[1.2] uppercase"
+                    dangerouslySetInnerHTML={{ __html: video.title.rendered }}
+                  />
+                  {video.excerpt?.rendered && (
+                    <p
+                      className="text-sm max-w-[500px] mx-auto"
+                      dangerouslySetInnerHTML={{
+                        __html: video.excerpt.rendered,
+                      }}
+                    />
+                  )}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+
+      {/* Loading enquanto carrega próximas páginas */}
+      {!loading && loadingMore && (
+        <div className="flex items-center justify-center py-10">
+          <Loader2 className="text-white w-8 h-8 animate-spin" />
         </div>
-      </div>
+      )}
 
       {/* Modal de vídeo */}
       {videoUrl && (

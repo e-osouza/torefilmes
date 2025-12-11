@@ -27,7 +27,6 @@ export default function Footer() {
                         <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.instagram.com/torefilmes" target="_blank"><Image src={"/social-instagram.svg"} width={16} height={16} alt=""/></a>
                         <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.facebook.com/torefilmes" target="_blank"><Image src={"/social-facebook.svg"} width={16} height={16} alt=""/></a>
                         <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.youtube.com/@torefilmes" target="_blank"><Image src={"/social-youtube.svg"} width={16} height={16} alt=""/></a>
-                        <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.linkedin.com/company/tore-filmes" target="_blank"><Image src={"/social-linkedin.svg"} width={16} height={16} alt=""/></a>
                     </div>
                 </div>
             </div>

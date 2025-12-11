@@ -41,7 +41,8 @@ export default function Sobre() {
                 </div>
                 <div className="flex justify-end"><span className="w-[100px] text-right h-[15px] bg-[var(--azul)]"></span></div>
 
-                <div className="mt-15 mb-10">
+        
+                {/*<div className="mt-15 mb-10">
                     <Image className="rounded-[10px]" src={"/sobre-2.jpg"} width={1300} height={1300} alt="Toré"/>
                     <div className="mt-5">
                         <p className=" bg-white/10 w-fit text-white uppercase text-[12px] mb-2 py-1 px-3 gap-2 rounded-full">Rodrigo monteiro</p>
@@ -64,7 +65,7 @@ export default function Sobre() {
                             <p className="text-white text-sm">Diretor de Filmagens</p>
                         </div>
                     </div>
-                </div>
+                </div>*/}
 
             </div>
 

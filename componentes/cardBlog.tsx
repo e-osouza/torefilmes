@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { fetchPosts, Post } from "../services/postService";
 import Image from "next/image";
-import Link from "next/link";
 import { MoveRight } from "lucide-react";
 
 interface CardBlogProps {

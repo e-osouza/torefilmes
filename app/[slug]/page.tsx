@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = post.title.rendered;
   const desc = post.excerpt?.rendered.replace(/<[^>]+>/g, '').slice(0, 160);
   const image = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
-  const url = `https://torefilmes.com.br/${slug}`;
+  const url = `https://painel.torefilmes.com.br/${slug}`;
   return {
     title: `${title} – Toré Filmes`,
     description: desc,
@@ -24,13 +24,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'article',
       images: image
         ? [{ url: image, width: 1200, height: 630 }]
-        : [{ url: "https://torefilmes.com.br/default-og.jpg", width: 1200, height: 630 }],
+        : [{ url: "https://painel.torefilmes.com.br/default-og.jpg", width: 1200, height: 630 }],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description: desc,
-      images: image ? [image] : ["https://torefilmes.com.br/default-og.jpg"],
+      images: image ? [image] : ["https://painel.torefilmes.com.br/default-og.jpg"],
     },
   };
 }
@@ -41,7 +41,7 @@ async function fetchPostBySlug(slug: string) {
   console.log("Buscando post pelo slug:", slug);
 
   const res = await fetch(
-    `https://torefilmes.com.br/wp-json/wp/v2/posts?slug=${slug}&_embed`,
+    `https://painel.torefilmes.com.br/wp-json/wp/v2/posts?slug=${slug}&_embed`,
     { next: { revalidate: 60 } }
   );
 

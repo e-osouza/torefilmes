@@ -19,7 +19,7 @@ export default function Home() {
       </section>
 
       <div className="max-w-[var(--largura)] mx-auto px-5 -mt-5 md:-mt-12 flex justify-end">
-        <Image className="selo" src={"/selo.svg"} width={100} height={100} alt="Toré"/>
+        <Image className="selo" src={"/selo.svg"} width={100} height={100} alt="Toré Filmes"/>
       </div>
 
       {/*section 2*/}

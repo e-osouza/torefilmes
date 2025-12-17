@@ -9,7 +9,7 @@ export default function Home() {
     <div className="overflow-hidden">
       
       {/*hero section*/}
-      <section className="relative w-full pb-[56%] overflow-hidden bg-black">
+      <section className="relative w-full pb-[56.2%] overflow-hidden bg-black">
         <iframe
           src="https://player.vimeo.com/video/1147321760?autoplay=1&muted=1&loop=1&controls=0&title=0&byline=0&portrait=0&autopause=0&playsinline=1"
           className="absolute inset-0 w-full h-full pointer-events-none"

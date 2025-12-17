@@ -54,9 +54,7 @@ useEffect(() => {
                 {/* contato*/}
                 <div className="flex justify-end gap-5 col-span-8 md:col-span-2">
                     <div className="hidden md:flex gap-2">
-                        <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.instagram.com/torefilmes" target="_blank"><Image src={"/social-instagram.svg"} width={16} height={16} alt=""/></a>
-                        <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.facebook.com/torefilmes" target="_blank"><Image src={"/social-facebook.svg"} width={16} height={16} alt=""/></a>
-                        <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.youtube.com/@torefilmes" target="_blank"><Image src={"/social-youtube.svg"} width={16} height={16} alt=""/></a>
+                        <a className="flex items-center gap-2 text-white border-2 border-white px-4 py-2 uppercase font-medium text-sm rounded-full" href="https://wa.me/5592984728001" target="_blank"><Image src={"/whatsapp.svg"} width={18} height={18} alt=""/> Contato</a>
                     </div>
                     <div className="block md:hidden leading-[1]">
                         <button onClick={() => setSidebarOpen(true)} className="text-white cursor-pointer leading-[1]" aria-label="Abrir menu"><AlignJustify size={28} /></button>

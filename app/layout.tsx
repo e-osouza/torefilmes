@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/componentes/header";
 import Footer from "@/componentes/footer";
 import Script from "next/script";
+import BotaoWP from "@/componentes/botaoWP";
 
 const Sora = localFont({
   src: "../public/fonts/Sora.ttf",
@@ -54,6 +55,7 @@ export default function RootLayout({
           ></iframe>
         </noscript>
         <Footer/>
+        <BotaoWP/>
       </body>
     </html>
   );

@@ -9,13 +9,14 @@ export default function Home() {
     <div className="overflow-hidden">
       
       {/*hero section*/}
-      <div className="bg-[url(/hero-banner.jpg)] bg-cover bg-top bg-no-repeat">
-        <div className="max-w-[var(--largura)] mx-auto px-5 relative h-[50vh] lg:h-[80vh] md:h-[70vh]">
-          <div className="absolute px-5 left-0 bottom-10 md:bottom-20 w-full">
-            <h1 className="text-white text-3xl md:text-6xl uppercase mx-auto table max-w-[750px] text-center">Transformando marcas com impacto</h1>
-          </div>
-        </div>
-      </div>
+      <section className="relative w-full pb-[56%] overflow-hidden bg-black">
+        <iframe
+          src="https://player.vimeo.com/video/1147321760?autoplay=1&muted=1&loop=1&controls=0&title=0&byline=0&portrait=0&autopause=0&playsinline=1"
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          allow="autoplay;"
+        />
+        <div className="relative z-10"></div>
+      </section>
 
       <div className="max-w-[var(--largura)] mx-auto px-5 -mt-5 md:-mt-12 flex justify-end">
         <Image className="selo" src={"/selo.svg"} width={100} height={100} alt="Toré"/>
@@ -134,14 +135,14 @@ export default function Home() {
           </div>
         </div>
 
-        <Link href={"/contato"} className="flex gap-2 items-center mx-auto text-white rounded-full border-2 w-fit uppercase font-[600] text-sm px-6 py-1 mt-5"><MoveRight/>Vem produzir com a Toré</Link>
+        <Link href={"/contato"} className="flex gap-2 items-center mx-auto text-white rounded-full border-2 w-fit uppercase font-[600] text-sm px-6 py-1 mt-5 mb-10"><MoveRight/>Vem produzir com a Toré</Link>
 
       </div>
 
-      {/*section 6*/}
+      {/*section 6
       <div className="bg-[url(/bg-abstract-2.jpg)] bg-cover bg-center bg-no-repeat mt-10 h-[350px] md:h-[500px] flex items-center justify-center">
         <Image className="w-[150px] md:w-[200px]" src={"/logotore.svg"} width={200} height={200} alt=""/>
-      </div>
+      </div>*/}
 
       {/*section 7*/}
       <div className="bg-[url(/bg-3223.jpg)] bg-cover bg-center bg-no-repeat relative h-[350px] md:h-[500px]">

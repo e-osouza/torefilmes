@@ -7,10 +7,10 @@ const Contraste = () => {
             {/* Coluna esquerda */}
             <div className="flex flex-col items-center md:items-start text-center md:text-left gap-15">
               <div>
-                <h2 className="uppercase text-xl font-medium mb-2">
+                <h2 className="text-white uppercase text-xl font-medium mb-2">
                   Sem estrutura, o conteúdo vira tentativa:
                 </h2>
-                <p className="text-sm">
+                <p className="text-sm text-white">
                   pouco ritmo, pouca clareza e oportunidades perdidas.
                 </p>
               </div>
@@ -24,7 +24,7 @@ const Contraste = () => {
             {/* Coluna direita */}
             <div className="flex flex-col items-center text-center gap-12">
               <img src="/selo.svg" className="w-24 h-24" alt="selo" />
-              <p className="text-xl md:text-2xl max-w-md">
+              <p className="text-white text-xl md:text-2xl max-w-md">
                 Produza com a Toré e coloque sua marca no digital com audiovisual de alto padrão.
               </p>
             </div>

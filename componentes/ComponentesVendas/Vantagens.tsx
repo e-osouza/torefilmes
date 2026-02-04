@@ -43,7 +43,7 @@ const Vantagens = () => {
       </div>
 
       {/* Título */}
-      <h2 className="text-center text-2xl sm:text-3xl leading-tight px-4">
+      <h2 className="text-white text-center text-2xl sm:text-3xl leading-tight px-4">
         Quando sua comunicação não anda,
         <br />
         <span className="font-bold">
@@ -62,6 +62,7 @@ const Vantagens = () => {
           md:grid-cols-3
           gap-4 sm:gap-6
           px-4
+          text-white
         "
       >
         {cardInfo.map((info) => (

@@ -31,7 +31,7 @@ const Diferenciais = () => {
             className="mb-4 w-36 sm:w-40 mx-auto md:mx-0"
           />
 
-          <p className="text-base sm:text-lg lg:text-xl font-extralight leading-relaxed">
+          <p className="text-white text-base sm:text-lg lg:text-xl font-extralight leading-relaxed">
             Transformamos sua ideia em{" "}
             <span className="font-extrabold">
               vídeos claros, profissionais e prontos para publicar.
@@ -49,6 +49,7 @@ const Diferenciais = () => {
                     py-2
                     text-sm sm:text-base
                     tracking-wide
+                    text-white
                   "
               >
                 <span

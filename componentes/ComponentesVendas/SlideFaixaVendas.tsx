@@ -13,7 +13,7 @@ const items = [
         <div className="marquee">
           <div className="marquee__track">
             {loopItems.map((item, i) => (
-              <p key={i} className="uppercase relative whitespace-nowrap pl-4 text-sm sm:text-base">
+              <p key={i} className="text-white uppercase relative whitespace-nowrap pl-4 text-sm sm:text-base">
                 <span
                   className="absolute left-0 top-[10px] h-[2px] w-[10px]"
                   style={{ backgroundColor: item.color }}

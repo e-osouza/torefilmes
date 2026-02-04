@@ -32,7 +32,7 @@ const Resultados = () => {
         </div>
   
         {/* Título */}
-        <h2 className="text-center text-lg sm:text-xl px-4">
+        <h2 className="text-white text-center text-lg sm:text-xl px-4">
           O que muda quando você produz com padrão alto:
         </h2>
   
@@ -60,7 +60,7 @@ const Resultados = () => {
                 className="w-full rounded-2xl"
               />
   
-              <h3 className="uppercase py-4 text-sm sm:text-base tracking-wide">
+              <h3 className="text-white uppercase py-4 text-sm sm:text-base tracking-wide">
                 {inf.titulo}
               </h3>
   

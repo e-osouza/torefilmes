@@ -145,7 +145,7 @@ const FormVendas = () => {
       </div>
 
       {/* Título */}
-      <h2 className="font-bold text-center text-xl sm:text-2xl leading-tight mb-8">
+      <h2 className=" text-white font-bold text-center text-xl sm:text-2xl leading-tight mb-8">
         Preencha o formulário e receba uma proposta
         <br />
         <span className="font-normal text-base sm:text-lg">
@@ -157,7 +157,7 @@ const FormVendas = () => {
       {enviadoComSucesso ? (
         <div className="text-center text-white p-8 rounded-lg backdrop-blur-sm max-w-md mx-auto border border-white/20">
           <CheckCircle size={60} className="mx-auto mb-4" />
-          <h3 className="text-2xl font-semibold leading-tight mb-2">
+          <h3 className="text-white text-2xl font-semibold leading-tight mb-2">
             Mensagem enviada com sucesso!
           </h3>
           <p className="text-sm text-gray-300">
@@ -174,7 +174,7 @@ const FormVendas = () => {
               value={form.nome}
               onChange={(e) => setForm({ ...form, nome: e.target.value })}
               required
-              className="w-full rounded-md border border-white/40 bg-transparent px-4 py-3 text-sm focus:border-white focus:outline-none"
+              className="text-white w-full rounded-md border border-white/40 bg-transparent px-4 py-3 text-sm focus:border-white focus:outline-none"
             />
 
             <input
@@ -183,7 +183,7 @@ const FormVendas = () => {
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               required
-              className="w-full rounded-md border border-white/40 bg-transparent px-4 py-3 text-sm focus:border-white focus:outline-none"
+              className="text-white w-full rounded-md border border-white/40 bg-transparent px-4 py-3 text-sm focus:border-white focus:outline-none"
             />
 
             <PatternFormat
@@ -195,7 +195,7 @@ const FormVendas = () => {
               }
               placeholder="Contato(WhatsApp):"
               required
-              className="w-full rounded-md border border-white/40 bg-transparent px-4 py-3 text-sm focus:border-white focus:outline-none"
+              className="text-white w-full rounded-md border border-white/40 bg-transparent px-4 py-3 text-sm focus:border-white focus:outline-none"
             />
 
             <input
@@ -203,7 +203,7 @@ const FormVendas = () => {
               placeholder="Empresa"
               value={form.empresa}
               onChange={(e) => setForm({ ...form, empresa: e.target.value })}
-              className="w-full rounded-md border border-white/40 bg-transparent px-4 py-3 text-sm focus:border-white focus:outline-none"
+              className="text-white w-full rounded-md border border-white/40 bg-transparent px-4 py-3 text-sm focus:border-white focus:outline-none"
             />
           </div>
 

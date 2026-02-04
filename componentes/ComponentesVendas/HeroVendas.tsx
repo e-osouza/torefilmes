@@ -68,7 +68,7 @@ const HeroVendas = () => {
                 mb-6 sm:mb-8
   
                 text-3xl sm:text-4xl lg:text-5xl
-  
+                text-white
                 after:content-['']
                 after:absolute
                 after:bg-[url(/selo.svg)]
@@ -92,7 +92,7 @@ const HeroVendas = () => {
               <span className="font-bold">mês inteiro em apenas 1 dia</span>
             </h2>
   
-            <p className="mb-10 sm:mb-12 text-base sm:text-lg lg:text-2xl">
+            <p className="text-white mb-10 sm:mb-12 text-base sm:text-lg lg:text-2xl">
               Saia do perfil parado e ganhe constância com
               <br />
               direção, captação e entrega final da Toré.

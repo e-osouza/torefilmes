@@ -38,7 +38,7 @@ const Vantagens = () => {
         <img
           src="/bagde-tore-filmes.svg"
           alt="tore-filmes"
-          className="w-36 sm:w-40"
+          className="h-12 w-auto"
         />
       </div>
 

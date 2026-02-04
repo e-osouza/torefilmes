@@ -44,3 +44,28 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.marquee {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+.marquee__track {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* gap-6 */
+  width: max-content;      /* <- chave */
+  flex: 0 0 auto;          /* <- chave */
+  white-space: nowrap;     /* <- chave */
+  animation: marquee 35s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}

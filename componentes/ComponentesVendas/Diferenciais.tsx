@@ -6,7 +6,7 @@ const bullets = [
 
 const Diferenciais = () => {
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <section className="relative after:absolute after:content-[''] after:top-0 after:right-0 after:bg-[url(/vector-diferencias 2.svg)] after:h-50 after:w-10 after:bg-cover after:bg-no-repeat after:bg-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center overflow-hidden">
         {/* IMAGEM */}
         <div className="relative overflow-hidden">

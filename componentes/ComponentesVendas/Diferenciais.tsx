@@ -25,11 +25,13 @@ const Diferenciais = () => {
 
         {/* TEXTO */}
         <div className="flex flex-col justify-center text-center md:text-left">
-          <img
-            src="/bagde-tore-filmes.svg"
-            alt="icone"
-            className="mb-4 w-36 sm:w-40 mx-auto md:mx-0"
-          />
+          <div className="flex justify-start">
+            <img
+              src="/bagde-tore-filmes.svg"
+              alt="icone"
+              className="mb-4 h-12 w-auto mx-auto md:mx-0"
+            />
+          </div>
 
           <p className="text-white text-base sm:text-lg lg:text-xl font-extralight leading-relaxed">
             Transformamos sua ideia em{" "}

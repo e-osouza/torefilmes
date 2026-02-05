@@ -107,20 +107,22 @@ const Vantagens = () => {
 
       {/* CTA */}
       <div className="flex justify-center items-center mt-10">
-        <button
-          className="
-            flex items-center gap-3
-            font-medium text-black uppercase
-            px-6 py-3
-            rounded-3xl
-            bg-white
-            cursor-pointer
-            transition
+        <a href="#form">
+          <button
+            className="
+          flex items-center gap-3
+          font-medium text-black uppercase
+          px-6 py-3
+          rounded-3xl
+          bg-white
+          cursor-pointer
+          transition
           "
-        >
-          <img src="/arrow-right.svg" alt="icone" className="w-5 h-5" />
-          Vem produzir com a Toré
-        </button>
+          >
+            <img src="/arrow-right.svg" alt="icone" className="w-5 h-5" />
+            Vem produzir com a Toré
+          </button>
+        </a>
       </div>
     </section>
   )

@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html{
+  scroll-behavior: smooth;
+}
+
 :root {
   --background: #000000;
   --foreground: #171717;
@@ -7,6 +11,7 @@
   --verde: #AAC645;
   --azul: #005AFF;
   --vermelho: #FF5348;
+  scroll-behavior: smooth;
 }
 
 @theme inline {

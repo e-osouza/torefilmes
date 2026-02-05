@@ -63,19 +63,21 @@ const Diferenciais = () => {
             ))}
           </div>
 
-          <div className="mt-6 flex justify-center md:justify-start">
-            <button
-              className="
-                  flex items-center justify-center gap-3
-                  font-medium text-black uppercase
-                  rounded-3xl bg-white cursor-pointer
-                  w-full max-w-[320px] sm:w-auto
-                  py-3 px-6
-                "
-            >
-              <img src="/arrow-right.svg" alt="seta" className="h-5 w-5 sm:h-6 sm:w-6" />
-              Vem produzir com a Toré
-            </button>
+          <div className="mt-6 flex justify-center md:justify-start">,
+            <a href="#form">
+              <button
+                className="
+              flex items-center justify-center gap-3
+              font-medium text-black uppercase
+              rounded-3xl bg-white cursor-pointer
+              w-full max-w-[320px] sm:w-auto
+              py-3 px-6
+              "
+              >
+                <img src="/arrow-right.svg" alt="seta" className="h-5 w-5 sm:h-6 sm:w-6" />
+                Vem produzir com a Toré
+              </button>
+            </a>
           </div>
         </div>
       </div>

@@ -16,9 +16,11 @@ const Vendas = () => {
                 <Vantagens />
                 <Diferenciais />
                 <Resultados />
-                <Contraste/>
-                <FormVendas/>
-                <MapSection/>
+                <Contraste />
+                <div id="form">
+                    <FormVendas />
+                </div>
+                <MapSection />
             </section>
         </>
     )

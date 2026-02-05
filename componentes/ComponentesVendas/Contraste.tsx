@@ -11,7 +11,7 @@ const Contraste = () => {
                 Sem estrutura, o conteúdo vira tentativa:
               </h2>
               <p className="text-sm text-white">
-                pouco ritmo, pouca clareza e oportunidades perdidas.
+                pouca clareza e uma imagem que não representa o nível do seu trabalho.
               </p>
             </div>
             <a href="#form">
@@ -26,7 +26,7 @@ const Contraste = () => {
           <div className="flex flex-col items-center text-center gap-12">
             <img src="/selo.svg" className="w-24 h-24" alt="selo" />
             <p className="text-white text-xl md:text-2xl max-w-md">
-              Produza com a Toré e coloque sua marca no digital com audiovisual de alto padrão.
+              Produza com a Toré e coloque sua marca no digital com a sua identidade, do jeito certo.
             </p>
           </div>
 

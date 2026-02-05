@@ -1,7 +1,7 @@
 const bullets = [
   { label: "Alinhamento", color: "#FFDB00" },
   { label: "gravação dirigida", color: "#005AFF" },
-  { label: "pós-produção completa ", color: "#FF5348" },
+  { label: "pós-produção completa com padronização visual ", color: "#FF5348" },
 ]
 
 const Diferenciais = () => {

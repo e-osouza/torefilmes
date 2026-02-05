@@ -12,7 +12,7 @@ const Vantagens = () => {
       id: 2,
       icone: "/icon-tab-3.svg",
       titulo: "Estrutura que sustenta",
-      desc: "Estúdio próprio, cenários montáveis e equipamentos de alto padrão."
+      desc: "Captação com padrão profissional no seu ambiente ou com cenários montáveis em nosso estúdio."
     },
     {
       id: 3,

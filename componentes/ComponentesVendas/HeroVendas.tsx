@@ -1,4 +1,32 @@
 const HeroVendas = () => {
+
+  const itens = [
+    {
+      titulo: "Institucionais",
+      color:"red"
+    },
+    {
+      titulo: "Corporativos",
+      color:"blue"
+    },
+    {
+      titulo: "Treinamentos",
+      color:"green"
+    },
+    {
+      titulo: "Redes sociais",
+      color:"yellow"
+    },
+    {
+      titulo: "Eventos e transmissões ao vivo",
+      color:"orange"
+    },
+    {
+      titulo: "Pacotes de produções",
+      color:"purple"
+    },
+  ]
+
   return (
     <section
       className="
@@ -87,18 +115,21 @@ const HeroVendas = () => {
                 lg:after:-top-6 lg:after:-right-25
               "
           >
-            Grave o conteúdo do seu
+            Vídeos para empresas com
             <br />
-            <span className="font-bold">mês inteiro em apenas 1 dia</span>
+            <span className="font-bold">padrão profissional da Toré</span>
           </h2>
 
-          <p className="text-white mb-10 sm:mb-12 text-base sm:text-lg lg:text-2xl">
-            Saia do perfil parado e ganhe constância com
-            <br />
-            direção, captação e entrega final da Toré.
-          </p>
+          <div className="text-start gap-3 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3">
+            {
+              itens.map((item) => (
+                <p style={{['--color' as any]:item.color}} className="font-black text-white pl-3 relative after:absolute after:content-[''] after:left-0 after:top-[2px] after:bg-[var(--color)] after:w-[5px] after:h-[20px] after:rounded-[6px]" >{item.titulo}</p>
+              ))
+            }
+          </div>
 
-          <div className="flex justify-center items-center">
+
+          <div className="flex justify-center items-center mt-6">
             <a href="#form">
 
               <button

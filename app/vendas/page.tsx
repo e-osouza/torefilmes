@@ -17,9 +17,9 @@ const Vendas = () => {
                 <SlideFaixaVendas />
                 <Vantagens />
                 <Diferenciais />
-                {/*
+
                 <EntregaTore />
-                 */}
+
                 <Resultados />
                 <Contraste />
                 <OQueProduzir />

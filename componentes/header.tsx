@@ -1,18 +1,14 @@
 'use client';
 
-import Link from "next/link";
 import Image from 'next/image';
-import { AlignJustify, CircleX } from "lucide-react";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import Link from 'next/link';
+import { AlignJustify, CircleX } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const pathname = usePathname();
-
-  // ❌ Não renderiza o header em /vendas e subrotas
-  if (pathname.startsWith('/vendas')) {
-    return null;
-  }
+  const hideHeader = pathname.startsWith('/vendas');
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -20,14 +16,23 @@ export default function Header() {
   const closeSidebar = () => setSidebarOpen(false);
 
   useEffect(() => {
+    if (hideHeader) {
+      return;
+    }
+
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [hideHeader]);
 
   useEffect(() => {
+    if (hideHeader) {
+      document.body.style.overflow = '';
+      return;
+    }
+
     if (isSidebarOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -37,21 +42,21 @@ export default function Header() {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [isSidebarOpen]);
+  }, [hideHeader, isSidebarOpen]);
+
+  if (hideHeader) {
+    return null;
+  }
 
   return (
     <>
       <header className="fixed top-0 md:top-5 px-0 md:px-5 w-full z-50">
         <div className="mx-auto max-w-[var(--largura)] items-center grid grid-cols-10 justify-stretch bg-black/40 backdrop-blur-[30px] md:py-2 py-3 md:pr-4 pr-5 pl-5 md:pl-8 rounded-none md:rounded-full">
-          
-          {/* Logo */}
           <div className="col-span-2">
             <Link
               href="/"
               className={`transition-all block ${
-                isScrolled
-                  ? 'w-[50px] lg:w-[70px]'
-                  : 'w-[60px] md:w-[80px]'
+                isScrolled ? 'w-[50px] lg:w-[70px]' : 'w-[60px] md:w-[80px]'
               }`}
             >
               <Image
@@ -65,25 +70,29 @@ export default function Header() {
             </Link>
           </div>
 
-<<<<<<< HEAD
-          {/* Menu Desktop */}
           <ul className="hidden md:flex gap-7 mx-auto text-[15px] px-5 py-4 col-span-6">
-            <li><Link href="/sobre" className="text-white">Quem Somos</Link></li>
-            <li><Link href="/portfolio" className="text-white">Portfólio</Link></li>
-            <li><a href="/blog" className="text-white">Blog</a></li>
-            <li><Link href="/contato" className="text-white">Contato</Link></li>
+            <li>
+              <Link href="/sobre" className="text-white">
+                Quem Somos
+              </Link>
+            </li>
+            <li>
+              <Link href="/portfolio" className="text-white">
+                Portfólio
+              </Link>
+            </li>
+            <li>
+              <Link href="/blog" className="text-white">
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link href="/contato" className="text-white">
+                Contato
+              </Link>
+            </li>
           </ul>
-=======
-                {/* Menu Desktop */}
-                <ul className="hidden md:flex gap-7 mx-auto text-[15px] px-5 py-4 col-span-6">
-                    <li><Link href="/sobre" className="text-white">Quem Somos</Link></li>
-                    <li><Link href="/portfolio" className="text-white">Portfólio</Link></li>
-                    <li><Link href="/blog" className="text-white">Blog</Link></li>
-                    <li><Link href="/contato" className="text-white">Contato</Link></li>
-                </ul>
->>>>>>> a80bd46 (dev 25.02.26)
 
-          {/* Contato / Menu Mobile */}
           <div className="flex justify-end gap-5 col-span-8 md:col-span-2">
             <div className="hidden md:flex gap-2">
               <a
@@ -97,7 +106,6 @@ export default function Header() {
               </a>
             </div>
 
-<<<<<<< HEAD
             <div className="block md:hidden leading-[1]">
               <button
                 onClick={() => setSidebarOpen(true)}
@@ -106,30 +114,11 @@ export default function Header() {
               >
                 <AlignJustify size={28} />
               </button>
-=======
-            <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] p-6">
-                <Link href="/" onClick={closeSidebar} className="block mb-10">
-                    <Image src="/logotore.svg" alt="Toré Filmes" width={100} height={40} priority className="w-30 mx-auto"/>
-                </Link>
-                <ul className="text-center space-y-4 text-lg font-bold">
-                    <li><Link href="/" onClick={closeSidebar} className="text-white">Início</Link></li>
-                    <li><Link href="/sobre" onClick={closeSidebar} className="text-white">Quem Somos</Link></li>
-                    <li><Link href="/portfolio" onClick={closeSidebar} className="text-white">Portfólio</Link></li>
-                    <li><Link href="/blog" onClick={closeSidebar} className="text-white">Blog</Link></li>
-                    <li><Link href="/contato" onClick={closeSidebar} className="text-white">Contato</Link></li>
-                </ul>
-                <div className="flex gap-2 justify-center mt-10">
-                    <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.instagram.com/torefilmes" target="_blank"><Image src={"/social-instagram.svg"} width={16} height={16} alt=""/></a>
-                    <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.facebook.com/torefilmes" target="_blank"><Image src={"/social-facebook.svg"} width={16} height={16} alt=""/></a>
-                    <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.youtube.com/@torefilmes" target="_blank"><Image src={"/social-youtube.svg"} width={16} height={16} alt=""/></a>
-                </div>
->>>>>>> a80bd46 (dev 25.02.26)
             </div>
           </div>
         </div>
       </header>
 
-      {/* Sidebar Mobile */}
       <div
         className={`bg-black/30 backdrop-blur-[50px] fixed top-0 left-0 h-full w-full z-50 transform transition-transform duration-300 ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
@@ -158,30 +147,61 @@ export default function Header() {
           </Link>
 
           <ul className="text-center space-y-4 text-lg font-bold">
-            <li><Link href="/" onClick={closeSidebar} className="text-white">Início</Link></li>
-            <li><Link href="/sobre" onClick={closeSidebar} className="text-white">Quem Somos</Link></li>
-            <li><Link href="/portfolio" onClick={closeSidebar} className="text-white">Portfólio</Link></li>
-            <li><a href="/blog" onClick={closeSidebar} className="text-white">Blog</a></li>
-            <li><Link href="/contato" onClick={closeSidebar} className="text-white">Contato</Link></li>
+            <li>
+              <Link href="/" onClick={closeSidebar} className="text-white">
+                Início
+              </Link>
+            </li>
+            <li>
+              <Link href="/sobre" onClick={closeSidebar} className="text-white">
+                Quem Somos
+              </Link>
+            </li>
+            <li>
+              <Link href="/portfolio" onClick={closeSidebar} className="text-white">
+                Portfólio
+              </Link>
+            </li>
+            <li>
+              <Link href="/blog" onClick={closeSidebar} className="text-white">
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link href="/contato" onClick={closeSidebar} className="text-white">
+                Contato
+              </Link>
+            </li>
           </ul>
 
           <div className="flex gap-2 justify-center mt-10">
-            <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.instagram.com/torefilmes" target="_blank" rel="noopener noreferrer">
+            <a
+              className="bg-[var(--azul)] p-2 rounded-full"
+              href="https://www.instagram.com/torefilmes"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Image src="/social-instagram.svg" width={16} height={16} alt="" />
             </a>
-            <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.facebook.com/torefilmes" target="_blank" rel="noopener noreferrer">
+            <a
+              className="bg-[var(--azul)] p-2 rounded-full"
+              href="https://www.facebook.com/torefilmes"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Image src="/social-facebook.svg" width={16} height={16} alt="" />
             </a>
-            <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.youtube.com/@torefilmes" target="_blank" rel="noopener noreferrer">
+            <a
+              className="bg-[var(--azul)] p-2 rounded-full"
+              href="https://www.youtube.com/@torefilmes"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Image src="/social-youtube.svg" width={16} height={16} alt="" />
             </a>
           </div>
         </div>
       </div>
     </>
-<<<<<<< HEAD
   );
-=======
-  )
->>>>>>> a80bd46 (dev 25.02.26)
 }

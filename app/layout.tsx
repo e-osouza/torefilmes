@@ -5,6 +5,7 @@ import Header from "@/componentes/header";
 import Footer from "@/componentes/footer";
 import Script from "next/script";
 import BotaoWP from "@/componentes/botaoWP";
+import TopLoadingBar from "@/componentes/topLoadingBar";
 
 const Sora = localFont({
   src: "../public/fonts/Sora.ttf",
@@ -12,8 +13,46 @@ const Sora = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Toré Filmes",
-  description: "Toré Filmes, transformando imaginação em realidade.",
+  title: {
+    default: "Toré Filmes | Produtora de Vídeo em Manaus",
+    template: "%s | Toré Filmes",
+  },
+  description:
+    "Produtora audiovisual em Manaus para vídeos publicitários, institucionais e conteúdo digital de alto impacto.",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.torefilmes.com.br"
+  ),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    siteName: "Toré Filmes",
+    title: "Toré Filmes | Produtora de Vídeo em Manaus",
+    description:
+      "Produtora audiovisual em Manaus para vídeos publicitários, institucionais e conteúdo digital de alto impacto.",
+    url: "/",
+    images: [{ url: "/bg-3223.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Toré Filmes | Produtora de Vídeo em Manaus",
+    description:
+      "Produtora audiovisual em Manaus para vídeos publicitários, institucionais e conteúdo digital de alto impacto.",
+    images: ["/bg-3223.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -43,6 +82,7 @@ export default function RootLayout({
       <body
         className={`${Sora.className} antialiased`}
       >
+        <TopLoadingBar />
         <Header/>
         {children}
 

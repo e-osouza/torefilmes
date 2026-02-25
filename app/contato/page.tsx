@@ -6,11 +6,25 @@ import { MoveRight } from "lucide-react";
 import ContactForm from "@/componentes/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contato - Toré Filmes",
-  description: "Vamos transformar sua ideia em uma produção de impacto?",
+  title: "Contato",
+  description:
+    "Fale com a Toré Filmes e solicite uma proposta para produção audiovisual em Manaus.",
+  alternates: {
+    canonical: "/contato",
+  },
   openGraph: {
-    title: "Contato - Toré Filmes",
-    images: "./bg-3223.jpg",
+    title: "Contato",
+    description:
+      "Fale com a Toré Filmes e solicite uma proposta para produção audiovisual em Manaus.",
+    url: "/contato",
+    images: [{ url: "/bg-3223.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contato",
+    description:
+      "Fale com a Toré Filmes e solicite uma proposta para produção audiovisual em Manaus.",
+    images: ["/bg-3223.jpg"],
   },
 };
 

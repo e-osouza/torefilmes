@@ -19,7 +19,7 @@ export default function Footer() {
                 </ul>
                 <ul className="mb-5 md:mb-0 space-y-2">
                     <li><Link href="/portfolio" className="text-white">Portfólio</Link></li>
-                    <li><a href="/blog" className="text-white">Blog</a></li>
+                    <li><Link href="/blog" className="text-white">Blog</Link></li>
                 </ul>
                 <div className="relative">
                     <a href="mailto:contato@torefilmes.com.br" target="_blank" className="flex text-sm items-center text-white gap-1"><Mail size={18} className='min-w-[20px]'/>contato@torefilmes.com.br</a>

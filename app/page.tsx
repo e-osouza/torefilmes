@@ -1,12 +1,62 @@
 import Faq from "@/componentes/faq";
 import { Tab, Tabs } from "@/componentes/tabs";
 import { MoveRight } from "lucide-react";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+export const metadata: Metadata = {
+  title: "Toré Filmes - Produtora de Vídeo em Manaus",
+  description:
+    "A Toré Filmes cria vídeos institucionais, publicitários e conteúdo digital para marcas que buscam impacto.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Toré Filmes - Produtora de Vídeo em Manaus",
+    description:
+      "A Toré Filmes cria vídeos institucionais, publicitários e conteúdo digital para marcas que buscam impacto.",
+    url: "/",
+    images: [{ url: "/bg-3223.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Produtora de Vídeo em Manaus",
+    description:
+      "A Toré Filmes cria vídeos institucionais, publicitários e conteúdo digital para marcas que buscam impacto.",
+    images: ["/bg-3223.jpg"],
+  },
+};
+
 export default function Home() {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.torefilmes.com.br";
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "Toré Filmes",
+    url: siteUrl,
+    image: `${siteUrl}/bg-3223.jpg`,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "R. Constelação Cruzeiro do Sul, 6 - Aleixo",
+      addressLocality: "Manaus",
+      addressRegion: "AM",
+      addressCountry: "BR",
+    },
+    sameAs: [
+      "https://www.instagram.com/torefilmes",
+      "https://www.facebook.com/torefilmes",
+      "https://www.youtube.com/@torefilmes",
+    ],
+  };
+
   return (
     <div className="overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       
       {/*hero section*/}
       <section className="relative w-full pb-[56.2%] overflow-hidden bg-black">

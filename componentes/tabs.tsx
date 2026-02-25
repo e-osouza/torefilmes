@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, ReactNode, FC } from "react";
+import { FC, ReactElement, ReactNode, useMemo, useState } from "react";
 
 interface TabProps {
   label: string;
@@ -11,21 +11,22 @@ interface TabsProps {
   children: ReactNode;
 }
 
-// Subcomponente separado
 export const Tab: FC<TabProps> = ({ children }) => {
   return <div>{children}</div>;
 };
 
-// Componente principal
 export const Tabs: FC<TabsProps> = ({ children }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const tabs = Array.isArray(children) ? children : [children];
+
+  const tabs = useMemo(() => {
+    const normalizedChildren = Array.isArray(children) ? children : [children];
+    return normalizedChildren as ReactElement<TabProps>[];
+  }, [children]);
 
   return (
     <div className="w-full">
-      {/* Cabeçalho */}
       <div className="flex flex-col md:flex-row gap-3 justify-center items-center">
-        {tabs.map((tab: any, index: number) => (
+        {tabs.map((tab, index) => (
           <button
             key={index}
             onClick={() => setActiveIndex(index)}
@@ -41,7 +42,6 @@ export const Tabs: FC<TabsProps> = ({ children }) => {
         ))}
       </div>
 
-      {/* Conteúdo da tab ativa */}
       <div className="mt-5">{tabs[activeIndex]}</div>
     </div>
   );

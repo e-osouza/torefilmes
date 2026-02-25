@@ -3,23 +3,37 @@ import { fetchPosts } from "@/services/postService";
 import { MoveRight } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Blog - Toré Filmes",
-  description: "aperte o play no conhecimento e explore nossos artigos.",
+  title: "Blog",
+  description:
+    "Artigos sobre audiovisual, criatividade, branding e produção de vídeo para empresas.",
+  alternates: {
+    canonical: "/blog",
+  },
   openGraph: {
-    title: "Blog - Toré Filmes",
-    images: "./bg-3223.jpg",
+    title: "Blog",
+    description:
+      "Artigos sobre audiovisual, criatividade, branding e produção de vídeo para empresas.",
+    url: "/blog",
+    images: [{ url: "/bg-3223.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog",
+    description:
+      "Artigos sobre audiovisual, criatividade, branding e produção de vídeo para empresas.",
+    images: ["/bg-3223.jpg"],
   },
 };
 
 export default async function Blog() {
-  const posts = await fetchPosts(1, 10);
+  const posts = await fetchPosts(1, 7);
   const [firstPost, ...otherPosts] = posts;
 
   return (
     <>
-      {/* Hero */}
       <div className="bg-[url(/bg-abstract.jpg)] bg-center bg-cover bg-no-repeat relative">
         <div className="max-w-[var(--largura)] mx-auto px-5 pt-50 pb-10 md:pt-80 md:pb-20 relative z-[1]">
           <h1 className="text-white text-center uppercase leading-[1.2] text-2xl md:text-3xl max-w-[580px] mx-auto">
@@ -35,16 +49,26 @@ export default async function Blog() {
       </div>
 
       <div className="max-w-[var(--largura)] mx-auto px-5 my-10">
-        {/* Destaque do primeiro post */}
         {firstPost && (
           <div className="blog-1 grid grid-cols-1 md:grid-cols-12 items-center bg-[#111] rounded-lg overflow-hidden">
             <div className="order-2 md:order-1 p-8 col-span-1 md:col-span-5">
-              <a href={`/${firstPost.slug}`}>
-                <h3 className="text-white text-xl leading-[1.4]" dangerouslySetInnerHTML={{ __html: firstPost.title.rendered }}/>
-              </a>
-              <a href={`/${firstPost.slug}`} className="flex gap-2 items-center rounded-full border border-white w-fit uppercase font-[600] text-sm text-white px-6 py-1 mt-5 hover:bg-white hover:text-black transition-all"><MoveRight />Ler Mais</a>
+              <Link href={`/${firstPost.slug}`}>
+                <h3
+                  className="text-white text-xl leading-[1.4]"
+                  dangerouslySetInnerHTML={{ __html: firstPost.title.rendered }}
+                />
+              </Link>
+              <Link
+                href={`/${firstPost.slug}`}
+                className="flex gap-2 items-center rounded-full border border-white w-fit uppercase font-[600] text-sm text-white px-6 py-1 mt-5 hover:bg-white hover:text-black transition-all"
+              >
+                <MoveRight />Ler Mais
+              </Link>
             </div>
-            <a href={`/${firstPost.slug}`} className="order-1 md:order-2 col-span-1 md:col-span-7 aspect-[10/5] relative">
+            <Link
+              href={`/${firstPost.slug}`}
+              className="order-1 md:order-2 col-span-1 md:col-span-7 aspect-[10/5] relative"
+            >
               <Image
                 src={
                   firstPost._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
@@ -54,11 +78,10 @@ export default async function Blog() {
                 fill
                 className="object-cover"
               />
-            </a>
+            </Link>
           </div>
         )}
 
-        {/* Restante dos posts */}
         <div className="mt-10">
           <CardBlog initialPosts={otherPosts} />
         </div>

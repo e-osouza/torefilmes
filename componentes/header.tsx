@@ -65,6 +65,7 @@ export default function Header() {
             </Link>
           </div>
 
+<<<<<<< HEAD
           {/* Menu Desktop */}
           <ul className="hidden md:flex gap-7 mx-auto text-[15px] px-5 py-4 col-span-6">
             <li><Link href="/sobre" className="text-white">Quem Somos</Link></li>
@@ -72,6 +73,15 @@ export default function Header() {
             <li><a href="/blog" className="text-white">Blog</a></li>
             <li><Link href="/contato" className="text-white">Contato</Link></li>
           </ul>
+=======
+                {/* Menu Desktop */}
+                <ul className="hidden md:flex gap-7 mx-auto text-[15px] px-5 py-4 col-span-6">
+                    <li><Link href="/sobre" className="text-white">Quem Somos</Link></li>
+                    <li><Link href="/portfolio" className="text-white">Portfólio</Link></li>
+                    <li><Link href="/blog" className="text-white">Blog</Link></li>
+                    <li><Link href="/contato" className="text-white">Contato</Link></li>
+                </ul>
+>>>>>>> a80bd46 (dev 25.02.26)
 
           {/* Contato / Menu Mobile */}
           <div className="flex justify-end gap-5 col-span-8 md:col-span-2">
@@ -87,6 +97,7 @@ export default function Header() {
               </a>
             </div>
 
+<<<<<<< HEAD
             <div className="block md:hidden leading-[1]">
               <button
                 onClick={() => setSidebarOpen(true)}
@@ -95,6 +106,24 @@ export default function Header() {
               >
                 <AlignJustify size={28} />
               </button>
+=======
+            <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] p-6">
+                <Link href="/" onClick={closeSidebar} className="block mb-10">
+                    <Image src="/logotore.svg" alt="Toré Filmes" width={100} height={40} priority className="w-30 mx-auto"/>
+                </Link>
+                <ul className="text-center space-y-4 text-lg font-bold">
+                    <li><Link href="/" onClick={closeSidebar} className="text-white">Início</Link></li>
+                    <li><Link href="/sobre" onClick={closeSidebar} className="text-white">Quem Somos</Link></li>
+                    <li><Link href="/portfolio" onClick={closeSidebar} className="text-white">Portfólio</Link></li>
+                    <li><Link href="/blog" onClick={closeSidebar} className="text-white">Blog</Link></li>
+                    <li><Link href="/contato" onClick={closeSidebar} className="text-white">Contato</Link></li>
+                </ul>
+                <div className="flex gap-2 justify-center mt-10">
+                    <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.instagram.com/torefilmes" target="_blank"><Image src={"/social-instagram.svg"} width={16} height={16} alt=""/></a>
+                    <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.facebook.com/torefilmes" target="_blank"><Image src={"/social-facebook.svg"} width={16} height={16} alt=""/></a>
+                    <a className="bg-[var(--azul)] p-2 rounded-full" href="https://www.youtube.com/@torefilmes" target="_blank"><Image src={"/social-youtube.svg"} width={16} height={16} alt=""/></a>
+                </div>
+>>>>>>> a80bd46 (dev 25.02.26)
             </div>
           </div>
         </div>
@@ -150,5 +179,9 @@ export default function Header() {
         </div>
       </div>
     </>
+<<<<<<< HEAD
   );
+=======
+  )
+>>>>>>> a80bd46 (dev 25.02.26)
 }

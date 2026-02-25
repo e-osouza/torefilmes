@@ -1,35 +1,33 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { X, Loader2 } from "lucide-react";
-import { fetchVideos, Video } from "@/services/videoService";
+import type { Video } from "@/services/videoService";
+import { fetchVideos } from "@/services/videoClientService";
 
-// Converte qualquer URL do YouTube em URL de embed
 function toEmbedUrl(url: string): string {
-  // https://www.youtube.com/watch?v=Kx8x9dY51Eg
   const watchMatch = url.match(/v=([^&]+)/);
   if (watchMatch) {
     return `https://www.youtube.com/embed/${watchMatch[1]}`;
   }
 
-  // https://youtu.be/Kx8x9dY51Eg
   const shortMatch = url.match(/youtu\.be\/([^?]+)/);
   if (shortMatch) {
     return `https://www.youtube.com/embed/${shortMatch[1]}`;
   }
 
-  // Se já for embed ou algo diferente, passa direto
   return url;
 }
 
 export default function PortfolioClient() {
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
   const [videos, setVideos] = useState<Video[]>([]);
-  const [loading, setLoading] = useState(true); // loading inicial
-  const [loadingMore, setLoadingMore] = useState(false); // loading ao carregar mais
+  const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
   const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true); // se ainda existem vídeos pra carregar
+  const [hasMore, setHasMore] = useState(true);
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
 
   const perPage = 5;
 
@@ -44,25 +42,25 @@ export default function PortfolioClient() {
 
   useEffect(() => {
     document.body.style.overflow = videoUrl ? "hidden" : "auto";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, [videoUrl]);
 
-  // Carregar primeira página
   useEffect(() => {
     const carregarVideos = async () => {
       const data = await fetchVideos(1, perPage);
       setVideos(data);
       setLoading(false);
 
-      // Se já veio menos que o perPage, não tem mais nada depois
       if (data.length < perPage) {
         setHasMore(false);
       }
     };
 
-    carregarVideos();
-  }, []);
+    void carregarVideos();
+  }, [perPage]);
 
-  // Função pra carregar mais quando chega perto do fim
   const loadMore = useCallback(async () => {
     if (loadingMore || !hasMore) return;
 
@@ -79,29 +77,36 @@ export default function PortfolioClient() {
         setHasMore(false);
       }
     } else {
-      // Não voltou nada: acabou mesmo
       setHasMore(false);
     }
 
     setLoadingMore(false);
-  }, [page, loadingMore, hasMore]);
+  }, [hasMore, loadingMore, page, perPage]);
 
-  // Listener de scroll pra fazer o infinite load
   useEffect(() => {
-    const handleScroll = () => {
-      if (!hasMore || loadingMore) return;
+    if (!hasMore || loadingMore) return;
 
-      const scrollPosition = window.innerHeight + window.scrollY;
-      const threshold = document.body.offsetHeight - 300;
+    const sentinel = loadMoreRef.current;
 
-      if (scrollPosition >= threshold) {
-        loadMore();
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          void loadMore();
+        }
+      },
+      {
+        rootMargin: "300px 0px",
       }
-    };
+    );
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [loadMore, hasMore, loadingMore]);
+    observer.observe(sentinel);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [hasMore, loadMore, loadingMore]);
 
   const getBackgroundImage = (video: Video): string => {
     return (
@@ -112,7 +117,6 @@ export default function PortfolioClient() {
 
   return (
     <div className="bg-black overflow-hidden">
-      {/* Cabeçalho */}
       <div className="bg-[url(/bg-abstract.jpg)] bg-center bg-cover bg-no-repeat relative">
         <div className="max-w-[var(--largura)] mx-auto px-5 pt-50 pb-10 md:pt-80 md:pb-20 relative z-[1]">
           <p className="bg-white/10 w-fit mx-auto flex items-center text-white justify-center uppercase text-[12px] mb-5 py-2 px-5 gap-2 rounded-full">
@@ -125,18 +129,16 @@ export default function PortfolioClient() {
         <div className="absolute bottom-0 left-0 w-full h-60 bg-gradient-to-t from-black to-transparent"></div>
       </div>
 
-      {/* Loading inicial */}
       {loading && (
         <div className="flex items-center justify-center py-40">
           <Loader2 className="text-white w-10 h-10 animate-spin" />
         </div>
       )}
 
-      {/* Lista de vídeos */}
       {!loading &&
         videos.map((video) => {
           const bgImage = getBackgroundImage(video);
-          const urlVideo = video.acf?.url_video; // ACF do WP
+          const urlVideo = video.acf?.url_video;
 
           return (
             <div
@@ -175,14 +177,14 @@ export default function PortfolioClient() {
           );
         })}
 
-      {/* Loading enquanto carrega próximas páginas */}
+      {hasMore && <div ref={loadMoreRef} className="h-1" />}
+
       {!loading && loadingMore && (
         <div className="flex items-center justify-center py-10">
           <Loader2 className="text-white w-8 h-8 animate-spin" />
         </div>
       )}
 
-      {/* Modal de vídeo */}
       {videoUrl && (
         <div
           className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 transition-opacity duration-300"

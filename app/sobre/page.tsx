@@ -2,11 +2,25 @@ import { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Quem Somos - Toré Filmes",
-  description: "A Toré Filmes é a maior produtora de vídeo de Manaus, referência em qualidade, inovação e impacto audiovisual.",
+  title: "Quem Somos",
+  description:
+    "Conheça a Toré Filmes, produtora audiovisual em Manaus com estrutura completa e equipe especializada.",
+  alternates: {
+    canonical: "/sobre",
+  },
   openGraph: {
-    title: "Quem Somos - Toré Filmes",
-    images: "./bg-3223.jpg",
+    title: "Quem Somos",
+    description:
+      "Conheça a Toré Filmes, produtora audiovisual em Manaus com estrutura completa e equipe especializada.",
+    url: "/sobre",
+    images: [{ url: "/bg-3223.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Quem Somos",
+    description:
+      "Conheça a Toré Filmes, produtora audiovisual em Manaus com estrutura completa e equipe especializada.",
+    images: ["/bg-3223.jpg"],
   },
 };
 

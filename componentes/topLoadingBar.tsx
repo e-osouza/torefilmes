@@ -119,7 +119,7 @@ export default function TopLoadingBar() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed left-0 top-0 z-[100] h-[8px] w-full"
+      className="pointer-events-none fixed left-0 top-0 z-[100] h-[7px] w-full"
       style={{ opacity: isVisible ? 1 : 0, transition: "opacity 180ms ease" }}
     >
       <div
